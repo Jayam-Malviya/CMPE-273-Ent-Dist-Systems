@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Functions</title>
+</head>
+<body>
+<script>
+-var mathGreatestCommonDivisor =  function(big, small){// defining a function named mathGreatestCommonDivisor
+	var temp;
+	while(small>0){
+		temp = big%small;
+		big =small;
+		small = temp;
+	}
+	return big;
+}
+
+// instantiating a function object using Function Constructor
+var mathLeastCommonMultiple = new Function('big','small',
+		' var temp = big*small; return temp/mathGreatestCommonDivisor(big,small)');
+		
+		document.write("<br/>Greatest Common Divisor of 12 & 3 = "+mathGreatestCommonDivisor(12,3));
+		document.write("<br/>Least Common Multiple of 4 & 3 = "+mathLeastCommonMultiple(4,3));
+</script>
+</body>
+</html>

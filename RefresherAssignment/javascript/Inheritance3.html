@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inheritance3</title>
+</head>
+<body>
+<script>
+	 function Vehicle(){
+		 			this.engineOn = false;
+				};
+		
+				Vehicle.prototype.startVehicle = function(){
+							this.engineOn = true;
+						};
+						
+				Vehicle.prototype.stopVehicle = function(){
+							this.engineOn = false;
+						};
+						
+				Vehicle.prototype.getEngineStatus= function(){
+							return this.engineOn ;
+						};
+					 
+			var someVehicle = new Vehicle('someVehicle');
+			document.write("<br/> someVehicle running status "+ someVehicle.getEngineStatus());
+			
+			function Ferrari(engineCapacity){
+				this.engineCapacity= engineCapacity;
+			};
+			Ferrari.prototype = new Vehicle();
+			Ferrari.prototype.constructor = Ferrari;
+			
+			var dreamVehicle = new Ferrari(1500);
+			document.write("<br/> My dream Vehicle"); 
+			document.write("<br/> engineCapacity "+ dreamVehicle.engineCapacity);
+			dreamVehicle.startVehicle();
+			document.write("<br/> running "+ dreamVehicle.getEngineStatus());
+</script>
+</body>
+</html>

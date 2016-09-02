@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Regular Expression</title>
+</head>
+<body>
+<script>
+
+var regLiteralPattern =  /\d+/;
+var address = "West Julian Street Pin 95110";
+
+//search
+
+var containsPincode = regLiteralPattern.exec(address);
+var pincodeIndex = containsPincode.index;
+var pincode = containsPincode[0];
+document.write("<br/> Finding Pincode in address : "+address);
+document.write("<br/> Pincode found in address at index: "+pincodeIndex);
+document.write("<br/> Pincode is : "+pincode);
+
+//test (validate)
+
+var passwordValidator = new RegExp("^[a-z]{5-10}$");
+
+
+/*
+ Regular expression are patterns for matching text/character in strings.
+ Regular expression are 
+ */
+</script>
+</body>
+</html>

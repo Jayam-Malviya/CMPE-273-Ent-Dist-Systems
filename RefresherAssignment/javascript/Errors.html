@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Errors</title>
+</head>
+<body>
+<script>
+	
+	var myBalance = 500;
+	var dailyWithdrawlLimit = 300;
+	var singleWithdrawlLimit = 100;
+	
+	var atmWithdrawl = function(amount){
+		
+		if(amount < 0){
+			throw new Error('Negative Amount requested, $ '+amount);
+		}
+		else if(amount > dailyWithdrawlLimit){
+			throw new Error('Amount requested exceeds daily withdrawl limit, $ '+ dailyWithdrawlLimit);
+		}
+		else if(amount > singleWithdrawlLimit){
+			throw new Error('Amount requested exceeds single withdrawl limit, $ '+ singleWithdrawlLimit);
+		}
+		
+		else if( amount > myBalance ){
+			throw new Error('Insufficient Balance, current balance $ '+ myBalance);
+		}
+		
+		else{
+			myBalance = myBalance - amount;
+			return amount			
+		}
+	}
+	
+	
+	document.write("<br/> Let me Withdraw money from this ATM ");
+	
+	var tryWithdrawingMoney= function(){
+	try{
+		document.write("<br/> First withdrawl (-100$)");
+		atmWithdrawl(-100);
+	}
+	catch(e){
+		document.write("<br/>"+e);
+	}
+	
+	
+	try{
+		document.write("<br/> Second withdrawl  (400$)");
+		atmWithdrawl(400);
+	}
+	catch(e){
+		document.write("<br/>"+e);
+	}
+	
+	
+	try{
+		document.write("<br/> Third withdrawl (200$)");
+		atmWithdrawl(200);
+	}
+	catch(e){
+		document.write("<br/>"+e);
+	}
+	
+	try{
+		document.write("<br/> Fourth withdrawl (50$)");
+		atmWithdrawl(50);
+	}
+	catch(e){
+		document.write("<br/>"+e);
+	}
+	
+  }
+	
+	tryWithdrawingMoney();
+	document.write("<br/> Available Balance $ "+myBalance);
+	
+</script>
+</body>
+</html>

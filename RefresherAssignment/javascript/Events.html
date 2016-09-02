@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Events</title>
+</head>
+<body>
+
+ <br/> Enter 1st number:  &nbsp;    
+ 	<input type="text" id="no1" name="no1" style="width: 20px;">
+ <br/> Enter 2nd number:     
+ 	<input type="text" id="no2" name="no2" style="width: 20px;">
+<br/> 
+<button type="button" onclick="sum()" >Sum</button>
+<button type="button" onclick="multiply()">Mulitply</button>
+<script>
+var multiply = function(){
+	var n1 = document.getElementById("no1").value;
+    var n2 = document.getElementById("no2").value;
+    var product = Number(n1) * Number(n2);
+	
+    alert("Product = "+ product);
+};
+
+var sum= function(){
+	var n1 = document.getElementById("no1").value;
+    var n2 = document.getElementById("no2").value;
+    var sum = Number(n1) + Number(n2);
+	
+    alert("Sum = "+ sum);
+};
+</script>
+</body >
+</html>
+<!-- 
+there are three parts to events.
+registering the name of the event
+registering the parameters to be passed durwhile raising the event 
+ -->

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inheritance2</title>
+</head>
+<body>
+<script>
+	 function bObject(){
+				this.a = 1;
+				this.c=  function(){
+	  				document.write("<br/> function of 'baseObject' ");
+  	  			};
+			  	this.b = 22;
+				};
+			var baseObject = new bObject(); // here the object created via constructor 
+			// is not having __proto__ property in internal browser & IE8, but has in chrome & firefox
+	document.write("<br/>"+ baseObject.b);
+	//var inheritedObject = Object.create(baseObject);
+	
+</script>
+</body>
+</html>

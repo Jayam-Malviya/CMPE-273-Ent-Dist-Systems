@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Conditions</title>
+</head>
+<body>
+<script>
+	var  isEven = function(num){
+			var isEvenNumber = (num%2)==0 ? true : false;
+			return isEvenNumber;
+	}
+	
+	var classCapacity = 90;
+	var enrolledStudents = 86;
+	var canGetAddCode = function(waitListNum){
+		var isCompletelyOccupied;
+		if(classCapacity == enrolledStudents){
+			isCompletelyOccupied = true;
+		}
+		else{
+			isCompletelyOccupied = false;
+		}
+		
+		var canGetAddCode  = waitListNum <= classCapacity - enrolledStudents;
+		if(canGetAddCode){
+			return true;
+		}
+		return false;
+	}
+	
+	document.write("<br/> Check if 29 is even or not");
+	document.write("<br/> 29 is even ? " +isEven(29));
+	
+	document.write("<br/> Check if you can get add code or not");
+	document.write("<br/> wait list #4, can get add code ? " +canGetAddCode(4));
+	document.write("<br/> wait list #5, can get add code ? " +canGetAddCode(5));
+</script>
+</body>
+</html>

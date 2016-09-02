@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TypeConversions</title>
+</head>
+<body>
+<script>
+	// string literal treated as object
+	var stringLiteral  = "CMPE273";
+	document.write("<br/> accessing length property"+stringLiteral.length);
+	document.write("<br/> accessing length property via [] "+stringLiteral['length']);
+	
+	var iamBoolean = true;
+	document.write("<br/> boolean as string "+iamBoolean.toString().length);
+	</script>
+</body>
+</html>

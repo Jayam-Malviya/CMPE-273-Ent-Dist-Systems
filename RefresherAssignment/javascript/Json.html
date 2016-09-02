@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Json</title>
+</head>
+<body>
+<script>
+	var responseText='{"StatusCode":200, "ResponseText":"Request was successful","Format":"Json"}';
+	var responseJson = JSON.parse(responseText);
+	document.write("<br/> response Status - " + responseJson.StatusCode);
+	document.write("<br/> response Text - " + responseJson.ResponseText);
+	document.write("<br/> response Format - " + responseJson.Format);
+	
+	responseJson.ResponseText = 'Request is modified';
+	
+	var jsonString  = JSON.stringify(responseJson);
+	document.write("<br/>  Modified Json : "+ jsonString); 
+</script>
+</body>
+</html>

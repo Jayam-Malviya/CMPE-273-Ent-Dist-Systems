@@ -55,18 +55,3 @@ public class DumbBrowser {
         return _backStack.isEmpty() ? "" : (String) _backStack.peek();
     }
 }
-
-
-/*
-* So Lets use Stack, Back Stack and Forward Stack.
-
-When stack is empty, disable the button.
-
-When you navigate to new Url, push url on Back Stack. Clear Forward Stack, this is the complicated step in case of Linked List or any other implementation.
-
-When you hit the back button, pop the top Url from Back Stack, push it in Forward Stack.
-
-When you hit the forward button, pop the top Url from Forward Stack and push it on to Back Stack.
-
-This logic can also be used for Undo / Redo functionality.
-* */

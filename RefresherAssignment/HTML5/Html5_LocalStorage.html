@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Local Storage</title>
+<script>
+
+var storeValue = function(){
+	var valueField = document.getElementById('value');;
+	localStorage.setItem('CartItem',valueField.value);
+	valueField.value = "";
+	displayStoredValue();
+}
+
+var fetchStorage = function(){
+	var storedValue = localStorage.getItem('CartItem');
+	return storedValue==null ? "EMPTY":storedValue;
+}
+
+var displayStoredValue=function(){
+	var displayCart = document.getElementById('cart');
+	displayCart.value = fetchStorage();
+}
+
+var removeElementFromCart= function(){
+	localStorage.removeItem('CartItem');
+	displayStoredValue();
+}
+
+</script>
+
+</head>
+<body onload="displayStoredValue()">
+
+
+<input type="text" id="value">
+<input type="button" id="store" value="Store" onclick="storeValue()">
+<input type="button" id="remove" value="Remove" onclick="removeElementFromCart()">
+
+<br/><br/><br/>
+Cart Conatins : <input type="text" id="cart">
+</body>
+</html>

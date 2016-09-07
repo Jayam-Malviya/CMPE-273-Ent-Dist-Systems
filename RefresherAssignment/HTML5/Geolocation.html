@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Geolocation</title>
+
+<script>
+
+var showLocation =  function(position){
+	   var latitude = position.coords.latitude;
+	   var longitude = position.coords.longitude;
+	   
+	   var msg = "";
+	   msg+="Latitude : "+latitude;
+	   msg+="\nLongitude : "+longitude;
+	   
+	   alert(msg);
+}
+
+var getLocation = function(){
+	if(!navigator.geolocation){
+		alert("Your Browser doesnt support geolocation.");
+		return;
+	}
+	var geolocation= navigator.geolocation;
+	geolocation.getCurrentPosition(showLocation);
+}
+
+
+</script>
+</head>
+<body>
+
+         <input type="button" onclick="getLocation()" value=" See your Current Location"/>
+</body>
+</html>

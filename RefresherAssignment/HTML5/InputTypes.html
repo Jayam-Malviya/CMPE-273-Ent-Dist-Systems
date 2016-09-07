@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>InputTypes</title>
+<script>
+var displayOrder =function(){
+	var customerName = document.getElementById('studentName');
+	var customerBday = document.getElementById('birthDay');
+	var customerColor = document.getElementById('bandanaColor');
+	var customerPickTime = document.getElementById('picktime');
+	var customerQty = document.getElementById('counts');
+	
+	var msg ="";
+	msg+= "Name: "+customerName.value;
+	msg+= "\nBirthday: "+customerBday.value;
+	msg+= "\ncolor : "+customerColor.value;
+	msg+= "\nPick Time : "+customerPickTime.value;
+	msg+= "\nBandanas : "+customerQty.value;
+	alert(msg);
+}
+</script>
+</head>
+
+<body>
+
+Bonanza Event Form <br/><br/>
+
+<form onsubmit="displayOrder()">
+Name: <input type="text" id="studentName" autofocus required> <br/>
+Birthday: <input type="date" id="birthDay" max="2000-12-31" min="1970-12-31" required><br>
+Bandana Color  <input type="color" id="bandanaColor"> <br/>
+Pick Up Time <input type="time" id="picktime" required> <br/>
+Quantity:  <input type="number" id="counts" min="1" max="5" step="1" value="1"><br/>
+<input type="submit" value="Order" >   <input type="reset">
+</form>
+<br/><br/>
+<!-- 
+Order Details:
+<br/><br/>
+
+Name: <input type="text" id="customerName" readonly> <br/>
+Birthday: <input type="date" name="customerBirthday"><br>
+Bandana Color  <input type="color" name="customerBandanaColor"> <br/>
+Pick Up Time <input type="time" name="orderPickTime" > <br/>
+Quantity:  <input type="number" name="orderCounts"><br/>
+ -->
+
+</body>
+
+</html>

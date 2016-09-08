@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>StrictMode</title>
+</head>
+<body>
+<script>
+	"use strict";
+	var Document = function(permission){
+		var _docPermission = permission;
+		Object.defineProperty(this, "permission",{
+			get:function(){
+				return _docPermission;  
+			}
+		});
+	}
+	
+	var mydocument = new Document("read+write");
+	mydocument.permission = "None";
+	document.write("new permission <br/>"+mydocument.permission +
+			"<br/> Changed permission of document via a readonly property!!!");
+</script>
+</body>
+</html>

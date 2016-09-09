@@ -1,43 +1,25 @@
 package com.darkRealm;
 
-import java.util.ArrayList;
-
 /**
- * Created by Jayam on 9/3/2016.
+ * Created by Jayam on 9/9/2016.
  */
-public class Consumer implements Runnable {
-
-
-    private ArrayList<String> _contentReadBuffer;
-
-    public Consumer(ArrayList<String> buffer) {
-        _contentReadBuffer = buffer;
+public class Consumer extends Thread{
+    Producer prod;
+    Consumer (Producer p) {
+        prod = p;
     }
 
     @Override
-    public void run() {
-        String read;
-        while (true) {
-            try {
-                synchronized (_contentReadBuffer) {
-                    if (_contentReadBuffer.size() == 0) {
-                        Thread.sleep(500);
-                    }
-                    if (_contentReadBuffer.size() == 1) {
-                        read = _contentReadBuffer.remove(0);
-                        System.out.println("Reading Content Line #" + read);
-                        break;
-                    }
+    public void run(){
+        System.out.println("Consumer Running");
 
-                    if (_contentReadBuffer.size() > 1) {
-                        read = _contentReadBuffer.remove(0);
-                        System.out.println("Reading Content Line #" + read);
-                    }
-                }
+        while(!prod.isComplete()){
+            try {
+                String msg = prod.getMessage();
+                System.out.println("Read Message : "+msg);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

@@ -1,35 +1,55 @@
 package com.darkRealm;
 
-import java.util.ArrayList;
+import java.util.Date;
+import java.util.Vector;
 
 /**
- * Created by Jayam on 9/3/2016.
+ * Created by Jayam on 9/9/2016.
  */
-public class Producer implements Runnable {
-    ArrayList<String> _contentWriteBuffer;
-    private int _bufferLength;
+public class Producer extends Thread {
 
-    public Producer(ArrayList<String> buffer, int bufferLength) {
-        _contentWriteBuffer = buffer;
-        _bufferLength = bufferLength;
+    static final int maxMsgs = 5;
+    int readTimes ;
+    int writeTimes ;
+    private Vector<String> messages = new Vector<>();
+
+    Producer() {
+        readTimes = writeTimes = 0;
     }
 
     @Override
     public void run() {
-        int lines = 0;
-        while (true) {
-            synchronized (_contentWriteBuffer) {
-                if (lines == _bufferLength) {
-                    break;
-                }
-                if (_contentWriteBuffer.size() < _bufferLength) {
-                    System.out.println("Writing Content Line #" + lines);
-                    _contentWriteBuffer.add("Line #" + lines);
-                    lines++;
-                }
-
+        System.out.println("Producer Running");
+        while (!isComplete()) {
+            try {
+                writeMessage();
+            } catch (InterruptedException e) {
             }
-
         }
+    }
+
+    private synchronized void writeMessage() throws InterruptedException {
+        while (messages.size() == maxMsgs) {
+            wait();
+        }
+        System.out.println("Produce writing message...");
+        messages.add(new Date().toString());
+        writeTimes++;
+        notify();
+    }
+
+    public synchronized String getMessage() throws InterruptedException {
+        notify();
+        while (messages.size() == 0) {
+            wait();
+        }
+        String readMessage = messages.firstElement();
+        messages.removeElement(readMessage);
+        readTimes++;
+        return readMessage;
+    }
+
+    public boolean isComplete() {
+        return writeTimes == 10 && readTimes == 10;
     }
 }

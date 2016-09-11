@@ -23,10 +23,18 @@ public class Inventory {
     }
 
     public  void magicallyFillInventory(){
-        for(int i=0; i<Category.values().length;i++){
+
             for(int j=0;j<_columns;j++){
-                _storageShelves[i][j] = new Product(Category.Shoes,Category.Shoes.toString()+j);
+                _storageShelves[0][j] = new Product(Category.Shoes,Category.Shoes.toString()+j);
             }
-        }
+
+
+	 for(int j=0;j<_columns;j++){	
+                _storageShelves[1][j] = new Product(Category.Clothes,Category.Clothes.toString()+j);
+            }
+
+	 for(int j=0;j<_columns;j++){	
+                _storageShelves[2][j] = new Product(Category.Electronics,Category.Electronics.toString()+j);
+            }
     }
 }
